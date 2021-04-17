@@ -18,6 +18,11 @@
 
 #include "stdio/stdio.h"
 
+#define LIST_CASE case '*':\
+  case '-':\
+  case '+':
+
+
 int
 peak(FILE *fp)
 {
@@ -164,7 +169,7 @@ blockquote(FILE *fp)
 			/* Next top level element */
 			switch (peak(fp)) {
 			case '#': /* Heading */
-			case '*': /* List */
+      LIST_CASE /* List */
 				goto end;
 			case '`': /* Code block */
 				if (nextstr(fp, "```")) {
@@ -186,7 +191,7 @@ end:
 }
 
 void
-list(FILE *fp)
+list(FILE *fp, char liststyle)
 {
 	int ch;
 
@@ -214,7 +219,7 @@ list(FILE *fp)
 			}
 
 			/* Line starting with * means next element */
-			if (next(fp, '*') == '*') {
+			if (next(fp, liststyle) == liststyle) {
 				printf("</li><li>");
 				break;
 			}
@@ -249,7 +254,7 @@ paragraph(FILE *fp)
 			switch (peak(fp)) {
 			case '#': /* Heading */
 			case '>': /* Blockquote */
-			case '*': /* List */
+      LIST_CASE /* List */
 				goto end;
 			case '`': /* Code block */
 				if (nextstr(fp, "```")) {
@@ -288,8 +293,8 @@ md2html(FILE *fp)
 		case '>':
 			blockquote(fp);
 			break;
-		case '*':
-			list(fp);
+    LIST_CASE
+      list(fp, ch);
 			break;
 		case '`':
 			if (nextstr(fp, "``")) {
