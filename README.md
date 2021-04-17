@@ -1,34 +1,32 @@
-# cat
+# md2html
 
-This is a simple C program that outputs file content. The magic is that it works
+> Markdown to html renderer that works on Windows
+
+Fork of [md2html](https://github.com/kukrimate/md2html). The magic is that it works
 on Linux, *BSD, macOs, Windows thanks to [cosmopolitan](https://github.com/jart/cosmopolitan).
-
-I created this repo as a project template for simple ape programs. `/ape` folder
-contains https://justine.lol/cosmopolitan/cosmopolitan-amalgamation-0.3.zip and
-`/stdio` is copied from cosmopolitan@7ed524ca31bca83fe6700045d346cad3f97b9567
 
 ## Running
 
 ```sh
-wget https://niedzwiedzinski.cyou/cat.com
-chmod +x cat.com
-sha256sum cat.com
-# 495b3bb169813b07d4c4c43568c6c395e72a952fdf7fe3e5b46bf130cc415af0
+wget https://niedzwiedzinski.cyou/md2htmmd2html.com
+chmod +x md2html.com
+sha256sum md2html.com
+# 0f1477ae8abfbc9c973d5149a63e5fe33d5121d515de2c9379e29bca42736d1c
 
 # For zsh or fish
-bash -c "./cat.com"
+bash -c "./md2html.com"
 
 # For everything else
-./cat.com
+./md2html.com
 ```
 
 ## Compiling
 
 Requirements:
 
-- make
-- gcc
-- objcopy (from pkg `binutils`)
+* make
+* gcc
+* objcopy (from pkg `binutils`)
 
 ```
 make
